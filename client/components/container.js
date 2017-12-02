@@ -23,12 +23,29 @@ class Container extends Component {
     };
 
     updateLocations = (array) => {
-        // console.log(array);
         this.setState({locations: array});
     }
 
     updateCoordinates = (lat, lng) => {
         this.setState({lat: lat, lng: lng});
+    }
+
+    saveRequest = (index) => {
+        let that = this; 
+        fetch('/show', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                placesId: that.state.locations[index].placesId,
+                name: that.state.locations[index].name,
+                rating: that.state.locations[index].rating,
+                types: that.state.locations[index].types,
+                address: that.state.locations[index].address,
+            }),
+        });
     }
 
     fetchRequest = () => {
@@ -59,7 +76,7 @@ class Container extends Component {
         }
         return (
         <div style={style}>
-            <Query updateCoordinates={this.updateCoordinates} loc={this.state.locations} lat={this.state.lat} lng={this.state.lng} />
+            <Query save={this.saveRequest} updateCoordinates={this.updateCoordinates} loc={this.state.locations} lat={this.state.lat} lng={this.state.lng} />
             <Map google={this.props.google} updateLocations={this.updateLocations} zoom={15} lat={this.state.lat} lng={this.state.lng} />
             <List saved={this.state.saved}/>
         </div>

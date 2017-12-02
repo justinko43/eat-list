@@ -10,6 +10,11 @@ function show(req, res) {
 }
 
 function save(req, res) {
+    // console.log(req.body);
+    
+    new Foodlist(req.body).save().then((student) => {
+        res.status(200).send(student);      
+    }).catch((err) => res.status(418).send('unable to process'));
 
 }
 
