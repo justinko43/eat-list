@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import {ScriptCache} from './lib/ScriptCache'
-import GoogleApi from './lib/GoogleApi'
+import {ScriptCache} from './library/ScriptCache'
+import GoogleApi from './library/GoogleApi'
 
 const defaultMapConfig = {}
 const defaultCreateCache = (options) => {
