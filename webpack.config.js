@@ -7,6 +7,11 @@ module.exports = {
     path: path.join(__dirname, '/build'),
     filename: 'bundle.js',
   },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+  },
   module: {
     rules: [
       {
