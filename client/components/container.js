@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import Map from './map'
+import {GoogleApiWrapper} from 'google-maps-react';
 
 class Container extends Component {
     render() {
@@ -18,6 +19,6 @@ class Container extends Component {
     )}
 }
 
-export default GoogleApiComponent({
-    apiKey: AIzaSyDeY7WMg8UU0JppzUqU-IWNo99uZM-nOsw
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyCWFt4hAIFUHT5X3r-Ww4EwjhGl41F8BNY'
 })(Container)

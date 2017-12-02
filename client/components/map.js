@@ -4,9 +4,44 @@ import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 
 class Map extends Component {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.google !== this.props.google) {
+          this.loadMap();
+        }
+    }
+
+    componentDidMount() {
+        this.loadMap();
+    }
+
+    loadMap() {
+        if (this.props && this.props.google) {
+          // google is available
+          const {google} = this.props;
+          const maps = google.maps;
+    
+          const mapRef = this.refs.map;
+          const node = ReactDOM.findDOMNode(mapRef);
+    
+          let zoom = 14;
+          let lat = 33.9794474;
+          let lng = -118.4224755;
+          const center = new maps.LatLng(lat, lng);
+          const mapConfig = Object.assign({}, {
+            center: center,
+            zoom: zoom
+          })
+          this.map = new maps.Map(node, mapConfig);
+        }
+      }
+
     render() {
+        const style = {
+            width: '100vw',
+            height: '100vh'
+        }
         return (
-          <div ref='map'>
+          <div ref='map' style = {style}>
             Loading map...123
           </div>
         )
