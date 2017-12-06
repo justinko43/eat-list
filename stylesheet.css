@@ -1,0 +1,48 @@
+* {
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    background-color: grey;
+}
+
+#search button{
+    height: 20px;
+    width: 300px;
+}
+
+div button{
+    width: 28px;
+    height:28px;
+    align-items: center;
+    background-image: url('https://images.vexels.com/media/users/3/134121/isolated/lists/5ff73adb05d7f1fe47dd49bb1b08affa-star-cartoon-icon-50.png');
+    background-size: 25px;
+}
+
+ul {
+    list-style: none;
+    line-height:2.5em;
+    margin-left: -40px;
+    min-width: 300px;
+    max-width: 300px;
+    font-size: 14px;
+}
+
+ul div {
+    border-bottom: 3px;
+    border-top: 3px;
+    border-color: grey;
+}
+
+.hidden {
+    width: 264px;
+    height: 50px;
+}
+
+.delete{
+    width: 28px;
+    height:28px;
+    align-items: center;
+    background-image: url('http://pngimages.net/sites/default/files/open--trash-can-png-image-83593.png');
+    background-size: 25px;
+}

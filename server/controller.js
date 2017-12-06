@@ -18,4 +18,11 @@ function save(req, res) {
 
 }
 
-module.exports = { save, show };
+function deleteList(req, res) {
+    Foodlist.findOneAndRemove({name: req.body.name}, (err) => {
+        if (!err) res.status(200).send('yay it deleted');
+        else res.status(418).send('error it did not delete');
+    });
+}
+
+module.exports = { save, show, deleteList };

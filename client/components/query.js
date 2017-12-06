@@ -10,10 +10,6 @@ class Query extends Component {
     }
 
     render(){
-        // console.log(this.props.loc.length);
-        // if (this.props.loc.length > 0) {
-        //     console.log(this.props.loc[0].name);
-        //   }
         return(
             <div>
                 <form id="search" onSubmit={this.handleLocation}>
@@ -21,6 +17,7 @@ class Query extends Component {
                     <input type="text" placeholder="longitude" ref="lng" />
                     <input type="submit" className="hidden" />
                 </form>
+                <h2> Places Nearby </h2>
                 <ul ref="results">
                     {/* {console.log(this.props.locations.map(function(item, i){
                         return i}))
@@ -28,8 +25,9 @@ class Query extends Component {
                     {/* {console.log(this.props.loc)} */}
                     {this.props.loc.length !== 0 && this.props.loc.map((item,i) => { 
                         return (
-                        <div key={i} id={i}>
-                            <li style={{listStyleType: 'none'}}>{item.name} - {item.rating}</li> <button type="button" onClick={() => this.props.save(i)}>Save</button>
+                        <div key={i} id={i} style={{display: 'flex', justifyContent: 'space-between', alignItems:'center'}}>
+                            <li style={{listStyleType: 'none'}}>{item.name}| Rating: <b>{item.rating}</b></li> 
+                            <button  className=".lngButton" type="button" onClick={() => this.props.save(i)}></button>
                         </div>
                     )
                     })}

@@ -52,14 +52,31 @@ class Container extends Component {
         fetch('/show').then(function(response){
             return response.json();
         }).then(data => {
-            console.log(data);
             this.setState({saved: data});
+        });
+    }
+
+    deleteRequest = (index) => {
+        let that = this; 
+        fetch('/delete', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                placesId: that.state.saved[index].placesId,
+                name: that.state.saved[index].name,
+                rating: that.state.saved[index].rating,
+                types: that.state.saved[index].types,
+                address: that.state.saved[index].address,
+            }),
         });
     }
 
     componentWillMount() {
         this.fetchRequest();
-        setInterval(this.fetchRequest, 3000);
+        setInterval(this.fetchRequest, 500);
     }
 
     render() {
@@ -72,13 +89,14 @@ class Container extends Component {
             display: 'flex',
             flexDirection: 'row',
             width: '100vw',
-            height: '100vh'
+            height: '100vh',
+            font: 'systems-ui',
         }
         return (
         <div style={style}>
             <Query save={this.saveRequest} updateCoordinates={this.updateCoordinates} loc={this.state.locations} lat={this.state.lat} lng={this.state.lng} />
             <Map google={this.props.google} updateLocations={this.updateLocations} zoom={15} lat={this.state.lat} lng={this.state.lng} />
-            <List saved={this.state.saved}/>
+            <List saved={this.state.saved} deleteRequest={this.deleteRequest}/>
         </div>
     )}
 }
